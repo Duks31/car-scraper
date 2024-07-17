@@ -19,6 +19,9 @@ ITEM_PIPELINES = {
    "car_scraper.pipelines.PostgresNoDuplicatesPipeline": 400,
 }
 
+SCRAPEOPS_API_KEY = '9980a955-f7ad-46b3-aea9-22d8a35615d6'
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "car_scraper (+http://www.yourdomain.com)"
 
@@ -59,12 +62,17 @@ ROBOTSTXT_OBEY = True
 #DOWNLOADER_MIDDLEWARES = {
 #    "car_scraper.middlewares.CarScraperDownloaderMiddleware": 543,
 #}
+DOWNLOADER_MIDDLEWARES = {
+    'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
-#    "scrapy.extensions.telnet.TelnetConsole": None,
-#}
+EXTENSIONS = {
+   # "scrapy.extensions.telnet.TelnetConsole": None,
+   'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500, 
+}
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
