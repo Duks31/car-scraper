@@ -13,19 +13,19 @@ class CarScraperPipeline:
     def process_item(self, item, spider):
         
         # removing the Naira sign from price
-        if "price" in item:
+        if item.get("price") is not None:
             item["price"] = int(item["price"].replace("₦", "").replace(",", "").strip())
 
         # removing "km" from mileage
-        if "mileage" in item:
+        if item.get("mileage") is not None:
             item["mileage"] = int(item["mileage"].split(" ")[0])
 
         # spliting city to get the particular city
-        if "city" in item:
+        if item.get("city") is not None:
             item["city"] = item["city"].split(",")[-1].strip()
 
         # converting engine size to int
-        if "engine_size" in item:
+        if item.get("engine_size") is not None:
             item["engine_size"] = int(item["engine_size"])
 
         return item
