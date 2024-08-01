@@ -19,7 +19,7 @@ ITEM_PIPELINES = {
    "car_scraper.pipelines.PostgresNoDuplicatesPipeline": 400,
 }
 
-SCRAPEOPS_API_KEY = '9980a955-f7ad-46b3-aea9-22d8a35615d6'
+SCRAPEOPS_API_KEY = 'SCRAPE_OPS_API_KEY'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
