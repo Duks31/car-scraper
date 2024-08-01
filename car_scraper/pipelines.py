@@ -37,10 +37,10 @@ class PostgresNoDuplicatesPipeline:
 
     def create_connection(self):
         self.connection = psycopg2.connect(
-            host="34.44.13.223",
-            database="postgres",
-            user="postgres",
-            password="cardatadb",
+            host=DB_HOST_NAME,
+            database=DB_NAME,
+            user=DB_USER,
+            password=DB_PASSWORD,
         )
         self.cur = self.connection.cursor()
 
